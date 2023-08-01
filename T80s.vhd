@@ -1,3 +1,4 @@
+-- NEWER VERSION OF T80*.vhd files (OTIR fixed)     7/30/23     TFOX 
 --
 -- Z80 compatible microprocessor core, synchronous top level
 -- Different timing than the original z80
@@ -79,7 +80,7 @@ entity T80s is
 	);
 	port(
 		RESET_n : in std_logic;
-		CLK_n     : in std_logic; --- CLK
+		CLK     : in std_logic;
 		CEN     : in std_logic := '1';
 		WAIT_n  : in std_logic := '1';
 		INT_n	  : in std_logic := '1';
@@ -130,7 +131,7 @@ begin
 		RESET_n => RESET_n,
 		BUSRQ_n => BUSRQ_n,
 		BUSAK_n => BUSAK_n,
-		CLK_n => CLK_n,     --- CLK,
+		CLK_n => CLK,
 		A => A,
 		DInst => DI,
 		DI => DI_Reg,
@@ -141,7 +142,7 @@ begin
 		IntCycle_n => IntCycle_n
 	);
 
-	process (RESET_n, CLK_n)        --- , CLK
+	process (RESET_n, CLK)
 	begin
 		if RESET_n = '0' then
 			RD_n <= '1';
@@ -149,7 +150,7 @@ begin
 			IORQ_n <= '1';
 			MREQ_n <= '1';
 			DI_Reg <= "00000000";
-		elsif rising_edge(CLK_n) then       --- CLK
+		elsif rising_edge(CLK) then
 			if CEN = '1' then
 				RD_n <= '1';
 				WR_n <= '1';

@@ -1,3 +1,4 @@
+-- NEWER VERSION OF T80*.vhd files (OTIR fixed)     7/30/23     TFOX 
 --------------------------------------------------------------------------------
 -- ****
 -- T80(c) core. Attempt to finish all undocumented features and provide
